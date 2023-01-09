@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('SCM Checkout') {
-            steps {
-                git branch: 'master', url: 'https://github.com/rahi28/Test-Jenkins.git'
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Building..'
