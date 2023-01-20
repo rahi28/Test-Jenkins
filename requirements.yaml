@@ -24,7 +24,7 @@
         state: present
     - name: Creating build folder
       file:
-        path: /var/www/jenkins-react-app
+        path: /var/www/jenkins-react-app/
         state: directory
     # - name: Creating build folder
     #   file:
