@@ -58,7 +58,10 @@
                     try_files $uri /index.html =404;
                   }
                 }
+    - name: Start 
+      shell: service nginx enble
     - name: Start server
-      shell: sudo service nginx start  
+      shell: service nginx start
+
 
 
