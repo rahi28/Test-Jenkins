@@ -59,7 +59,9 @@
                   }
                 }
     - name: Start server
-      shell: systemctl start nginx  
+      service:
+        name: nginx
+        state: started
 
 
 
