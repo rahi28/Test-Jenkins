@@ -10,7 +10,7 @@ pipeline {
         // }
         stage("Configuration") {
             steps {
-                sh 'sudo yum install git'
+                sh 'ansible --version'
                // ansiblePlaybook 'requirements.yaml'
             }
         }
