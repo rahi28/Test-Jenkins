@@ -1,7 +1,7 @@
 ---
 - name: Installing dependencies
   hosts: all
-  become: true
+  become: yes
   tasks:
     - name: Updating yum
       yum: name=* state=latest  
