@@ -59,9 +59,6 @@
                   }
                 }
     - name: Start server
-      service:
-        name: nginx
-        state: started
-
+      shell: sudo service nginx start  
 
 
