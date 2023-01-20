@@ -8,9 +8,9 @@ pipeline {
         //         git 'https://github.com/rahi28/Test-Jenkins.git'
         //     }
         // }
-        stage("Configuration ") {
+        stage("Configuration") {
             steps {
-                sh 'yum install git'
+                sh 'sudo yum install git'
                // ansiblePlaybook 'requirements.yaml'
             }
         }
