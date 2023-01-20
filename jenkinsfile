@@ -1,6 +1,11 @@
 pipeline {
      agent any
      stages {
+        stage("Configuration") {
+            steps {
+                ansibleplaybook playbook: 'requirements.yaml'
+            }
+        }
         stage("Build") {
             steps {
                 sh "sudo npm install"
