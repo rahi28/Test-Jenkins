@@ -3,11 +3,11 @@
   hosts: all
   become: yes
   tasks:
-    - name: Updating in Visudo
-      lineinfile:
-        path: visudo
-        line: ansibleslave ALL=(ALL) NOPASSWD:ALL
-        state: present 
+    # - name: Updating in Visudo
+    #   lineinfile:
+    #     path: visudo
+    #     line: ansibleslave ALL=(ALL) NOPASSWD:ALL
+    #     state: present 
     - name: Updating yum
       yum: name=* state=latest  
     - name: Getting node dependencies
