@@ -16,7 +16,7 @@
         name: nginx
         state: latest
     - name: Creating build folder
-      directory:
+      file:
         path: /var/www/jenkins-react-app
-    
+        state: directory
     
