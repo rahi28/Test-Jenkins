@@ -40,8 +40,7 @@
              npm install
              npm run build 
     - name: Deploy
-      shell: |
-             rm -rf /var/www/jenkins-react-app
+      shell: 
              cp -r /home/ansibleslave/jekins-react-app/build/ /var/www/jenkins-react-app/
     - name: Update nginx configuration
       blockinfile: 
