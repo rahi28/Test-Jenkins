@@ -3,29 +3,29 @@ pipeline {
                 label "ansibleadmin"
             }
      stages {
-        stage("SCM Checkout"){
-            steps{
-                git 'https://github.com/rahi28/Test-Jenkins.git'
-            }
-        }
+        // stage("SCM Checkout"){
+        //     steps{
+        //         git 'https://github.com/rahi28/Test-Jenkins.git'
+        //     }
+        // }
         stage("Configuration ") {
             steps {
                 sh 'yum install git'
-                ansiblePlaybook 'requirements.yaml'
+               // ansiblePlaybook 'requirements.yaml'
             }
         }
-        stage("Build") {
-            steps {
-                sh "sudo npm install"
-                sh "sudo npm run build"
-            }
-        }
-        stage("Deploy") {
-            steps {
-                sh "sudo rm -rf /var/www/jenkins-react-app"
-                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/jenkins-react-app/"
-            }
-        }
+        // stage("Build") {
+        //     steps {
+        //         sh "sudo npm install"
+        //         sh "sudo npm run build"
+        //     }
+        // }
+        // stage("Deploy") {
+        //     steps {
+        //         sh "sudo rm -rf /var/www/jenkins-react-app"
+        //         sh "sudo cp -r ${WORKSPACE}/build/ /var/www/jenkins-react-app/"
+        //     }
+        // }
     }
 }
 
