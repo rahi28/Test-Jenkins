@@ -11,7 +11,7 @@
     - name: Updating yum
       yum: name=* state=latest  
     - name: Getting node dependencies
-      shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+      shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
     - name: Installing nodejs
       yum:
         name: nodejs
