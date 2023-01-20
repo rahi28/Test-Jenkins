@@ -1,6 +1,11 @@
 pipeline {
      agent any
      stages {
+        stage("SCM Checkout"){
+            steps{
+                git 'https://github.com/rahi28/Test-Jenkins.git'
+            }
+        }
         stage("Configuration") {
             steps {
                 ansiblePlaybook 'requirements.yaml'

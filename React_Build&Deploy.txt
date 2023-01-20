@@ -1,0 +1,62 @@
+
+- sudo yum update
+- sudo yum install curl
+- curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+- sudo yum install nodejs
+
+- sudo yum install -y ngnix
+
+#After build the files will be in this folder
+- sudo mkdir /var/www/jekins-react-app
+
+#Update the data in nginx.config file in /etc/nginx
+server {
+  listen 3000;
+  server_name 53.282.5.7; #public ip of ec2
+  root /var/www/jenkins-react-app; #root built path
+  index index.html; #starting file of project
+  
+  access_log /var/log/nginx/jenkins-react-app.log;
+  error_log /var/log/nginx/jenkins-react-app.error.log;
+  location / {
+    try_files $uri /index.html =404;
+  }
+}
+
+#Create syslink
+- sudo ln -s /etc/nginx/sites-available/jenkins-react-app /etc/nginx/sites-enabled/jenkins-react-app
+
+#Start Nginx Server
+- sudo service nginx start
+
+#Pipepline:Jenkins
+pipeline {
+     agent any
+     stages {
+        stage("Build") {
+            steps {
+                sh "sudo npm install"
+                sh "sudo npm run build"
+            }
+        }
+        stage("Deploy") {
+            steps {
+                sh "sudo rm -rf /var/www/jenkins-react-app"
+                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/jenkins-react-app/"
+            }
+        }
+    }
+}
+
+
+#Changes in visudo
+- visudo
+- jenkins ALL=(ALL) NOPASSWD: /usr/bin/npm install
+  jenkins ALL=(ALL) NOPASSWD: /usr/bin/npm run build
+  jenkins ALL=(ALL) NOPASSWD: /bin/rm -rf /var/www/jenkins-react-app
+  jenkins ALL=(ALL) NOPASSWD: /bin/cp -r /var/lib/jenkins/workspace/jenkins-react-app/build/ /var/www/jenkins-react-app/
+
+
+
+#Article reference link
+https://medium.com/swlh/setup-a-ci-cd-pipeline-to-automate-react-app-deployment-on-aws-ec2-82bd0c194f77
