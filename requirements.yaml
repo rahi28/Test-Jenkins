@@ -34,11 +34,10 @@
       git: 
         repo: 'https://github.com/oshanfernando/jenkins-react-app.git/'
         dest: /home/ansibleslave/jenkins-react-app
-    - name: Install dependencies
-      shell: npm install
     - name: build
       shell: |
-             cd /home/ansibleslave/jenkins-react-app 
+             cd /home/ansibleslave/jenkins-react-app/ 
+             npm install
              npm run build 
     - name: Deploy
       shell: |
