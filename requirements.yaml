@@ -1,0 +1,22 @@
+---
+- name: Installing dependencies
+  hosts: all
+  become: true
+  tasks:
+    - name: Updating yum
+      yum: name=* state=latest  
+    - name: Getting node dependencies
+      shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    - name: Installing nodejs
+      yum:
+        name: nodejs
+        state: present
+    - name: Installing nginx
+      yum: 
+        name: nginx
+        state: latest
+    - name: Creating build folder
+      directory:
+        path: /var/www/jenkins-react-app
+    
+    
