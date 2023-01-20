@@ -18,6 +18,10 @@
         state: present
     - name: Installing nginx
       shell: amazon-linux-extras install nginx1 -y
+    - name: Installing Git
+      yum:
+        name: git
+        state: present
     - name: Creating build folder
       file:
         path: /var/www/jenkins-react-app
