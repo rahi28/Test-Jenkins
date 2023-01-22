@@ -8,6 +8,7 @@
     #     path: visudo
     #     line: ansibleslave ALL=(ALL) NOPASSWD:ALL
     #     state: present 
+    
     - name: Updating yum
       yum: name=* state=latest  
     - name: Getting node dependencies
@@ -42,9 +43,15 @@
     - name: Deploy
       shell: 
              cp -r /home/ansibleslave/jenkins-react-app/build /var/www/jenkins-react-app/
+    - name: 
+    - name: Change in nginx configuration
+      template:
+        src:  nginx.j2
+        dest: /etc/nginx/nginx.conf
+
     # - name: Update nginx configuration
     #   blockinfile: 
-    #     path: /etc/nginx/nginx.conf
+    #     path: /etc/nginx/nginx.conf.j2
     #     block: |
     #            server {
     #               listen 3000;
