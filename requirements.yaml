@@ -43,7 +43,7 @@
     - name: Deploy
       shell: 
              cp -r /home/ansibleslave/jenkins-react-app/build /var/www/jenkins-react-app/
-    - name: 
+    
     - name: Change in nginx configuration
       template:
         src:  nginx.j2
